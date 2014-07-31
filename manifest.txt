@@ -1,0 +1,2 @@
+Main-Class: HtmlToPdf
+Class-Path: core-renderer-R8.jar itext-2.0.8.jar xercesImpl-2.9.1.jar
