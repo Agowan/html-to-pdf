@@ -14,13 +14,14 @@ jar cfm HtmlToPdf.jar manifest.txt HtmlToPdf.class
 ## Usage
 The file will return the pdf on standard out for you to do as you please with the file.
 
-With args
-```bash
-java -jar HtmlToPdf.jar "<body>Hello World</body>" > hello_world.pdf
-```
-You can also use standard in
+Without fonts
 ```bash
 echo "<body>Hello World</body>" | java -jar HtmlToPdf.jar > hello_world.pdf
+```
+
+With fonts
+```bash
+echo "<body style="font-family: Arial">Hello World</body>" | java -jar HtmlToPdf.jar /path/to/Arial.ttf > hello_world.pdf
 ```
 
 ## Using ruby?

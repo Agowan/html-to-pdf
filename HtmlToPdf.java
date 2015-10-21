@@ -1,24 +1,27 @@
 import java.io.*;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import com.lowagie.text.*;
+import com.lowagie.text.pdf.*;
+import org.xhtmlrenderer.pdf.*;
 
 public class HtmlToPdf
 {
   public static void main(String [] args) throws Exception
   {
     String html = new String();
-    if(args.length > 0){
-      html = args[0];
-    } else {
-      String line = "";
-      BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "UTF8"));
-      while( (line=br.readLine()) != null){
-        html += line;
-      }
+
+    String line = "";
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "UTF8"));
+    while( (line=br.readLine()) != null){
+      html += line;
     }
 
     ITextRenderer renderer = new ITextRenderer();
 
     renderer.setDocumentFromString(html);
+    for(int i = 0 ; i < args.length ; i++){
+      renderer.getFontResolver().addFont(args[i], true);
+    }
 
     renderer.layout();
 
